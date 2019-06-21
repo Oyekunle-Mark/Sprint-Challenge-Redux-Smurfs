@@ -14,7 +14,7 @@ const StyledSmurf = styled.div`
   max-width: 650px;
   background: rgb(128, 214, 248);
   border-radius: 5px;
-  box-shadow: 0px 0px 11px 3px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 11px 3px rgba(0, 0, 0, 0.2);
 
   h4 {
     font-family: 'News Cycle', sans-serif;
@@ -57,7 +57,14 @@ const CreateSmurf = ({ addSmurf, creating }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    addSmurf(name.current.value, age.current.value, height.current.value);
+
+    const smurfName = name.current.value;
+    const smurfAge = age.current.value;
+    const smurfHeight = height.current.value;
+
+    if (!smurfName.trim().length || !smurfAge.trim().length || !smurfHeight.trim().length) return;
+
+    addSmurf(smurfName, smurfAge, smurfHeight);
   };
 
   return (
