@@ -1,8 +1,47 @@
 import React, { createRef } from 'react';
 import { func, bool } from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { addSmurf } from '../actions';
+
+const StyledSmurf = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 20px 0;
+  max-width: 650px;
+  background: rgb(128, 214, 248);
+  border-radius: 5px;
+
+  h4 {
+    font-family: 'News Cycle', sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  form input {
+    height: 20px;
+    margin: 0 5px;
+    border: 1px solid rgb(10, 10, 10);
+    border-radius: 3px;
+    padding: 5px;
+  }
+
+  form button {
+    height: 32px;
+    padding: 5px;
+    border: 1px solid rgb(10, 10, 10);
+    border-radius: 3px;
+    background: rgb(10, 10, 10);
+    color: white;
+  }
+`;
 
 const CreateSmurf = ({ addSmurf, creating }) => {
   const name = createRef();
@@ -15,7 +54,7 @@ const CreateSmurf = ({ addSmurf, creating }) => {
   };
 
   return (
-    <div>
+    <StyledSmurf>
       <h4>Add a smurf to the village</h4>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="smurf name" ref={name} />
@@ -23,8 +62,8 @@ const CreateSmurf = ({ addSmurf, creating }) => {
         <input tye="text" placeholder="smurf height" ref={height} />
         <button type="submit">Add to village</button>
       </form>
-      {creating && <h5>Adding smur...</h5>}
-    </div>
+      {creating && <h4>Adding smurf...</h4>}
+    </StyledSmurf>
   );
 };
 
