@@ -12,6 +12,12 @@ const StyledApp = styled.div`
 
   width: 100vw;
   min-height: 100vh;
+
+  h4 {
+    font-family: 'News Cycle', sans-serif;
+    font-size: 18px;
+    margin: 10px 0;
+  }
 `;
 
 const App = () => (

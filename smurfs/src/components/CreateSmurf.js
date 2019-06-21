@@ -14,6 +14,7 @@ const StyledSmurf = styled.div`
   max-width: 650px;
   background: rgb(128, 214, 248);
   border-radius: 5px;
+  box-shadow: 0px 0px 11px 3px rgba(0,0,0,0.2);
 
   h4 {
     font-family: 'News Cycle', sans-serif;
@@ -40,6 +41,12 @@ const StyledSmurf = styled.div`
     border-radius: 3px;
     background: rgb(10, 10, 10);
     color: white;
+  }
+
+  form button:hover {
+    cursor: pointer;
+    background: white;
+    color: rgb(10, 10, 10);
   }
 `;
 

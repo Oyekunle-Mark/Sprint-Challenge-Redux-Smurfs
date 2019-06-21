@@ -1,9 +1,19 @@
 import React, { useEffect } from 'react';
 import { func, arrayOf, object, bool, string } from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { getSmurfs, deleteSmurf, toggleUpdating } from '../actions';
 import Smurf from './Smurf';
+
+const StyledSmurfs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 600px;
+  margin: 10px;
+`;
 
 const Smurfs = ({
   getSmurfs,
@@ -29,11 +39,12 @@ const Smurfs = ({
   ));
 
   return (
-    <div>
+    <StyledSmurfs>
+      <h4>Smurfs</h4>
       {fetching && <h4>Loading...</h4>}
       {error && <h4>Error</h4>}
       {smurfsList}
-    </div>
+    </StyledSmurfs>
   );
 };
 
