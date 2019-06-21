@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { func, arrayOf, object, bool } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getSmurfs } from '../actions';
@@ -9,7 +10,19 @@ const Smurfs = ({ getSmurfs, smurfs, fetching, error }) => {
 
   const smurfsList = smurfs.map(smurf => <Smurf key={smurf.id} {...smurf} />);
 
-  return <div>{smurfsList}</div>;
+  return (
+    <div>
+      {fetching && <h4>Loading</h4>}
+      {error && <h4>Error</h4>}
+      {smurfsList}
+    </div>
+  );
+};
+
+Smurfs.propTypes = {
+  getSmurfs: func.isRequired,
+  smurfs: arrayOf(object).isRequired,
+  fetching: bool.isRequired,
 };
 
 const mapStateToProps = state => ({
