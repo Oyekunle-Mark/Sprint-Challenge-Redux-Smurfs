@@ -35,7 +35,12 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_SMURF:
-      return { ...state, smurfs: action.payload, addingSmurf: false };
+      return {
+        ...state,
+        smurfs: action.payload,
+        addingSmurf: false,
+        error: false,
+      };
     case actionTypes.GET_SMURFS:
       return { ...state, smurfs: action.payload, fetchingSmurfs: false };
     case actionTypes.CREATING:
@@ -43,7 +48,12 @@ export default (state = initialState, action) => {
     case actionTypes.FETCHING:
       return { ...state, fetchingSmurfs: true };
     case actionTypes.ERROR:
-      return { ...state, error: true, fetchingSmurfs: false };
+      return {
+        ...state,
+        error: true,
+        fetchingSmurfs: false,
+        addingSmurf: false,
+      };
     default:
       return state;
   }

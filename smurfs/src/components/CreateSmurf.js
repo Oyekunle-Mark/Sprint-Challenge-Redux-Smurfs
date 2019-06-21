@@ -1,9 +1,10 @@
 import React, { createRef } from 'react';
+import { func, bool } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { addSmurf } from '../actions';
 
-const CreateSmurf = ({ addSmurf }) => {
+const CreateSmurf = ({ addSmurf, creating }) => {
   const name = createRef();
   const age = createRef();
   const height = createRef();
@@ -14,13 +15,22 @@ const CreateSmurf = ({ addSmurf }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="smurf name" ref={name} />
-      <input type="number" placeholder="smurf age" ref={age} />
-      <input tye="text" placeholder="smurf height" ref={height} />
-      <button type="submit">Add to village</button>
-    </form>
+    <div>
+      <h4>Add a smurf to the village</h4>
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="smurf name" ref={name} />
+        <input type="number" placeholder="smurf age" ref={age} />
+        <input tye="text" placeholder="smurf height" ref={height} />
+        <button type="submit">Add to village</button>
+      </form>
+      {creating && <h5>Adding smurf</h5>}
+    </div>
   );
+};
+
+CreateSmurf.propTypes = {
+  addSmurf: func.isRequired,
+  creating: bool.isRequired,
 };
 
 const mapStateToProps = state => ({
