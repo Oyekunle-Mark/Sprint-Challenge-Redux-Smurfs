@@ -18,9 +18,16 @@ import axios from 'axios';
 export const actionTypes = {
   ADD_SMURF: 'ADD_SMURF',
   GET_SMURFS: 'GET_SMURFS',
+  FETCHING: 'FETCHING',
+  CREATING: 'CREATING',
+  ERROR: 'ERROR',
 };
 
 export const addSmurf = (name, age, height) => dispatch => {
+  dispatch({
+    type: actionTypes.CREATING,
+  });
+
   axios
     .post('http://localhost:3333/smurfs', {
       name,
@@ -33,10 +40,19 @@ export const addSmurf = (name, age, height) => dispatch => {
         payload: res.data,
       }),
     )
-    .catch(err => console.log(err.message));
+    .catch(err => {
+      console.log(err.message);
+      dispatch({
+        type: actionTypes.ERROR,
+      });
+    });
 };
 
 export const getSmurfs = () => dispatch => {
+  dispatch({
+    type: actionTypes.FETCHING,
+  });
+
   axios
     .get('http://localhost:3333/smurfs')
     .then(res =>
@@ -45,5 +61,10 @@ export const getSmurfs = () => dispatch => {
         payload: res.data,
       }),
     )
-    .catch(err => console.log(err.message));
+    .catch(err => {
+      console.log(err.message);
+      dispatch({
+        type: actionTypes.ERROR,
+      });
+    });
 };
