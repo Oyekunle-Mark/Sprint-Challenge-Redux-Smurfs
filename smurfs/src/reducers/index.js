@@ -45,14 +45,19 @@ export default (state = initialState, action) => {
       return { ...state, smurfs: action.payload, fetchingSmurfs: false };
     case actionTypes.CREATING:
       return { ...state, addingSmurf: true };
+    case actionTypes.DELETE_SMURF:
+      return { ...state, smurfs: action.payload, deletingSmurf: false };
     case actionTypes.FETCHING:
       return { ...state, fetchingSmurfs: true };
+    case actionTypes.DELETING:
+      return { ...state, deletingSmurf: true };
     case actionTypes.ERROR:
       return {
         ...state,
         error: true,
         fetchingSmurfs: false,
         addingSmurf: false,
+        deletingSmurf: false,
       };
     default:
       return state;

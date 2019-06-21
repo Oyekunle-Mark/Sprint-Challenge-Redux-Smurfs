@@ -21,6 +21,8 @@ export const actionTypes = {
   FETCHING: 'FETCHING',
   CREATING: 'CREATING',
   ERROR: 'ERROR',
+  DELETE_SMURF: 'DELETE_SMURF',
+  DELETING: 'DELETING',
 };
 
 export const addSmurf = (name, age, height) => dispatch => {
@@ -58,6 +60,27 @@ export const getSmurfs = () => dispatch => {
     .then(res =>
       dispatch({
         type: actionTypes.GET_SMURFS,
+        payload: res.data,
+      }),
+    )
+    .catch(err => {
+      console.log(err.message);
+      dispatch({
+        type: actionTypes.ERROR,
+      });
+    });
+};
+
+export const deleteSmurf = id => dispatch => {
+  dispatch({
+    type: actionTypes.DELETING,
+  });
+
+  axios
+    .delete(`http://localhost:3333/smurfs/${id}`)
+    .then(res =>
+      dispatch({
+        type: actionTypes.DELETE_SMURF,
         payload: res.data,
       }),
     )

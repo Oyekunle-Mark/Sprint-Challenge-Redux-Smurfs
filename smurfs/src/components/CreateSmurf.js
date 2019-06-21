@@ -23,7 +23,7 @@ const CreateSmurf = ({ addSmurf, creating }) => {
         <input tye="text" placeholder="smurf height" ref={height} />
         <button type="submit">Add to village</button>
       </form>
-      {creating && <h5>Adding smurf</h5>}
+      {creating && <h5>Adding smur...</h5>}
     </div>
   );
 };
