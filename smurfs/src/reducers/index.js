@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
     case actionTypes.FETCHING:
       return { ...state, fetchingSmurfs: true };
     case actionTypes.ERROR:
-      return { ...state, error: true };
+      return { ...state, error: true, fetchingSmurfs: false };
     default:
       return state;
   }
