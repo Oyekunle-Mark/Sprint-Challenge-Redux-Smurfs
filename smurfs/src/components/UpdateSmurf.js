@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { updateSmurf } from '../actions';
+
+const StyledForm = styled.form`
+  input {
+    height: 20px;
+    border: 1px solid rgb(10, 10, 10);
+    border-radius: 3px;
+    padding: 5px;
+    width: 100px;
+    margin: 10px 10px 10px 0;
+  }
+`;
 
 const UpdateSmurf = ({ id, name, age, height, updateSmurf }) => {
   const [nameValue, updateName] = useState(name);
@@ -15,7 +27,7 @@ const UpdateSmurf = ({ id, name, age, height, updateSmurf }) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <StyledForm onSubmit={submitHandler}>
       <input
         type="text"
         value={nameValue}
@@ -32,7 +44,7 @@ const UpdateSmurf = ({ id, name, age, height, updateSmurf }) => {
         onChange={e => updateHeight(e.target.value)}
       />
       <button type="submit">Update Smurf</button>
-    </form>
+    </StyledForm>
   );
 };
 
