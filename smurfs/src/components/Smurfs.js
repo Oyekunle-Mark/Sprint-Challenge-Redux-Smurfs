@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { func, arrayOf, object, bool } from 'prop-types';
+import { func, arrayOf, object, bool, string } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getSmurfs, deleteSmurf, toggleUpdating } from '../actions';
@@ -43,6 +43,8 @@ Smurfs.propTypes = {
   smurfs: arrayOf(object).isRequired,
   fetching: bool.isRequired,
   deleting: bool.isRequired,
+  toggleUpdating: func.isRequired,
+  updating: string.isRequired,
 };
 
 const mapStateToProps = state => ({

@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
     case actionTypes.UPDATE_SMURF:
       return { ...state, smurfs: action.payload, updatingSmurf: '' };
     case actionTypes.UPDATING:
-      return { ...state, updatingSmurf: action.payload };
+      return { ...state, updatingSmurf: action.payload.toString() };
     case actionTypes.ERROR:
       return {
         ...state,

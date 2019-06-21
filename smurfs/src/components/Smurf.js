@@ -38,6 +38,8 @@ Smurf.propTypes = {
   height: string.isRequired,
   deleteSmurf: func.isRequired,
   deleting: bool.isRequired,
+  currentlyUpdated: string.isRequired,
+  toggleUpdating: func.isRequired,
 };
 
 export default Smurf;
