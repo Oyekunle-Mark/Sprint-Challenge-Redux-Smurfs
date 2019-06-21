@@ -1,6 +1,6 @@
 1.  Name 3 JavaScript Array/Object Methods that do not produce side-effects? Which method do we use to create a new object while extending the properties of another object?
 
-- Spread operator
+- Array.prototype.concat()
 - Array.prototype.map()
 - Array.prototype.filter()
 - _We use the `Object.assign()` method to create a new object and extend the properties of another object._

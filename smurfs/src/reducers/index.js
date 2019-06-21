@@ -27,7 +27,7 @@ const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurf: false,
-  updatingSmurf: false,
+  updatingSmurf: '',
   deletingSmurf: false,
   error: null,
 };
@@ -51,6 +51,10 @@ export default (state = initialState, action) => {
       return { ...state, fetchingSmurfs: true };
     case actionTypes.DELETING:
       return { ...state, deletingSmurf: true };
+    case actionTypes.UPDATE_SMURF:
+      return { ...state, smurfs: action.payload, updatingSmurf: '' };
+    case actionTypes.UPDATING:
+      return { ...state, updatingSmurf: action.payload };
     case actionTypes.ERROR:
       return {
         ...state,

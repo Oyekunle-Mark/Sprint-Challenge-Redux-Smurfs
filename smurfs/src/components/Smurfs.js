@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { func, arrayOf, object, bool } from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getSmurfs, deleteSmurf } from '../actions';
+import { getSmurfs, deleteSmurf, toggleUpdating } from '../actions';
 import Smurf from './Smurf';
 
 const Smurfs = ({
@@ -10,8 +10,10 @@ const Smurfs = ({
   smurfs,
   fetching,
   deleting,
+  updating,
   error,
   deleteSmurf,
+  toggleUpdating,
 }) => {
   useEffect(getSmurfs, []);
 
@@ -21,6 +23,8 @@ const Smurfs = ({
       {...smurf}
       deleteSmurf={deleteSmurf}
       deleting={deleting}
+      currentlyUpdated={updating}
+      toggleUpdating={toggleUpdating}
     />
   ));
 
@@ -45,10 +49,11 @@ const mapStateToProps = state => ({
   smurfs: state.smurfs,
   fetching: state.fetchingSmurfs,
   deleting: state.deletingSmurf,
+  updating: state.updatingSmurf,
   error: state.error,
 });
 
 export default connect(
   mapStateToProps,
-  { getSmurfs, deleteSmurf },
+  { getSmurfs, deleteSmurf, toggleUpdating },
 )(Smurfs);
